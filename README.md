@@ -1,2 +1,3 @@
 # Path_tracker_Arduino-
-Path tracker for autonomous robots. 
+Abstract
+This project implements a simple robotic system using an Arduino board, a servo motor, and a tracking sensor to follow a white line or tape on the ground. The system continuously detects changes in the environment using the tracking sensor, which distinguishes between white tape and a black background. Based on these inputs, the system adjusts the servo motor's position to guide the robot along the line. The servo motor adjusts its direction either left, right, or stays centered to ensure smooth tracking of the line. Additionally, a visual representation of the robot's behavior is displayed in real-time using the Processing environment, simulating the servo's movements on screen. 
