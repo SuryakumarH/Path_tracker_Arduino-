@@ -1,0 +1,42 @@
+#include <Servo.h>
+
+const int servoPin = 12;
+const int trackerPin = 11;
+const int ledPin = 13;
+
+Servo myServo;
+
+const int leftPosition = 60;
+const int centerPosition = 90;
+const int rightPosition = 115;
+
+void setup() {
+  myServo.attach(servoPin);
+  myServo.write(centerPosition);
+
+  pinMode(trackerPin, INPUT);
+  pinMode(ledPin, OUTPUT);
+
+  Serial.begin(9600);
+  Serial.println("System initialized.");
+}
+
+void loop() {
+  int trackerState = digitalRead(trackerPin);
+
+  if (trackerState == HIGH) {
+    Serial.println("White tape detected: Moving straight.");
+    myServo.write(centerPosition);
+    digitalWrite(ledPin, LOW);
+  } else {
+    Serial.println("No tape detected: Searching for tape.");
+    digitalWrite(ledPin, HIGH);
+
+    myServo.write(leftPosition);
+    delay(100);
+    myServo.write(rightPosition);
+    delay(100);
+  }
+
+  delay(50);
+}
